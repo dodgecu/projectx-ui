@@ -1,0 +1,8 @@
+<div class="relative">
+  <ng-content select="[appInput]"></ng-content>
+  <ng-content select="[appLabel]"></ng-content>
+  <ng-content select="[appInputSuffix]"></ng-content>
+</div>
+@if(!controlValid()) {
+    <ng-content select="app-form-field-error"></ng-content>
+}

@@ -1,3 +1,31 @@
-<div class="flex bg-white dark:bg-black w-screen h-screen">
-  <div class="flex flex-1 justify-center items-center">Sign In</div>
+<div class="flex w-screen h-screen">
+  <div class="flex flex-1 justify-center items-center">
+    <div class="bg-background shadow p-6 rounded-lg min-w-96">
+      <h5 class="mb-2 font-bold text-2xl text-center text-foreground tracking-tight">Sign in</h5>
+      <form class="flex flex-col space-y-2 text-left" [formGroup]="signInForm">
+        <app-form-field>
+          <label for="username" appLabel>Username</label>
+          <input appInput type="text" id="username" formControlName="username" />
+          <app-form-field-error>Required</app-form-field-error>
+        </app-form-field>
+        <app-form-field>
+          <label for="password" appLabel>Password</label>
+          <input appInput #passwordInput type="password" id="password" formControlName="password" />
+          <button appInputSuffix (mousedown)="onPasswordViewToggle(passwordInput)" (mouseup)="onPasswordViewToggle(passwordInput)">
+            @if(viewPassword) {
+            <ng-icon name="heroEyeSlash"></ng-icon>
+            } @else {
+            <ng-icon name="heroEye"></ng-icon>
+            }
+          </button>
+          <app-form-field-error>Required</app-form-field-error>
+        </app-form-field>
+      </form>
+
+      <div class="flex items-center text-muted-foreground text-sm">
+        Not a Member yet?
+        <button button-light-light button-pill button-small routerLink="/sign-up">Sign up</button>
+      </div>
+    </div>
+  </div>
 </div>

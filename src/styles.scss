@@ -2,3 +2,227 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 210 40% 96%;
+    --card-foreground: 240 0% 0%;
+    --primary: 347 77% 50%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 213 27% 84%;
+    --muted-foreground: 215 16% 47%;
+    --destructive: 350 100% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --primary: 221.2 83.2% 53.3%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --gradient-initial: radial-gradient(
+      circle farthest-corner at 48.8% 52%,
+      rgb(20, 17, 74) 0.1%,
+      rgb(6, 9, 31) 100.2%
+    );
+    --foreground: 210 40% 98%;
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --destructive: 350 100% 40%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+  }
+
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full rounded-md border border-border bg-background px-3 py-3 text-xs text-foreground placeholder-muted-foreground focus:z-10 focus:border-primary focus:outline-none focus:ring-primary;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply h-4 w-4 rounded border-border bg-background text-primary focus:ring-2 focus:ring-primary;
+  }
+}
+
+@layer components {
+  .dropdown-content {
+    @apply pointer-events-none scale-95 opacity-0 duration-100 ease-in;
+  }
+
+  .dropdown:hover > .dropdown-content {
+    @apply pointer-events-auto block scale-100 animate-fade-in-up opacity-100 duration-200;
+  }
+
+  /** BUTTONS **/
+  .button-base {
+    @apply font-semibold focus-visible:outline-none flex items-center justify-center focus-visible:ring-2 focus-visible:ring-offset-2 active:translate-y-px disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .button-large {
+    @apply px-7 py-2.5 text-lg;
+  }
+
+  .button-small {
+    @apply px-3 py-1 text-xs;
+  }
+
+  .button-medium {
+    @apply px-5 py-2 text-sm;
+  }
+
+  .button-rounded {
+    @apply rounded-lg;
+  }
+
+  .button-square {
+    @apply rounded-none;
+  }
+
+  .button-pill {
+    @apply rounded-full;
+  }
+
+  .button-shadow-small {
+    @apply shadow-sm;
+  }
+
+  .button-shadow-medium {
+    @apply shadow-md;
+  }
+
+  .button-shadow-large {
+    @apply shadow-lg;
+  }
+
+  /** BUTTON PRIMARY **/
+  .button-primary-bold {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-primary;
+  }
+
+  .button-primary-light {
+    @apply bg-primary/20 text-primary hover:bg-primary/30 focus-visible:ring-primary;
+  }
+
+  .button-primary {
+    @apply bg-transparent text-primary hover:bg-primary/10 focus-visible:ring-primary;
+  }
+
+  /** BUTTON DANGER **/
+  .button-danger-bold {
+    @apply bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive;
+  }
+
+  .button-danger-light {
+    @apply bg-destructive/20 text-destructive hover:bg-destructive/30 focus-visible:ring-destructive;
+  }
+
+  .button-danger {
+    @apply bg-transparent text-destructive hover:bg-destructive/10 focus-visible:ring-destructive;
+  }
+
+  /** BUTTON SUCCESS **/
+  .button-success-bold {
+    @apply bg-green-500 text-green-950 hover:bg-green-600 focus-visible:ring-green-500;
+  }
+
+  .button-success-light {
+    @apply bg-green-500/20 text-green-600 hover:bg-green-500/30 focus-visible:ring-green-500;
+  }
+
+  .button-success {
+    @apply bg-transparent text-green-600 hover:bg-green-500/10 focus-visible:ring-green-500;
+  }
+
+  /** BUTTON WARNING **/
+  .button-warning-bold {
+    @apply bg-yellow-500 text-yellow-950 hover:bg-yellow-600 focus-visible:ring-yellow-500;
+  }
+
+  .button-warning-light {
+    @apply bg-yellow-500/20 text-yellow-600 hover:bg-yellow-500/30 focus-visible:ring-yellow-500;
+  }
+
+  .button-warning {
+    @apply bg-transparent text-yellow-600 hover:bg-yellow-500/10 focus-visible:ring-yellow-500;
+  }
+
+  /** BUTTON INFO **/
+  .button-info-bold {
+    @apply bg-violet-500 text-white hover:bg-violet-600 focus-visible:ring-violet-500;
+  }
+
+  .button-info-light {
+    @apply bg-violet-500/20 text-violet-600 hover:bg-violet-500/30 focus-visible:ring-violet-500;
+  }
+
+  .button-info {
+    @apply bg-transparent text-violet-600 hover:bg-violet-500/10 focus-visible:ring-violet-500;
+  }
+
+  /** BUTTON LIGHT **/
+  .button-light-bold {
+    @apply bg-muted text-muted-foreground hover:bg-muted/90 focus-visible:ring-muted;
+  }
+
+  .button-light-light {
+    @apply bg-muted/20 text-muted-foreground hover:bg-muted focus-visible:ring-muted;
+  }
+
+  .button-light {
+    @apply bg-transparent text-muted-foreground hover:bg-muted focus-visible:ring-muted;
+  }
+
+  /** FORMS **/
+  .label-regular {
+    @apply top-2 peer-focus:top-2 peer-placeholder-shown:top-1/2 left-1 z-10 absolute bg-background px-2 peer-focus:px-2 text-muted-foreground text-sm peer-focus:text-primary transform origin-[0] -translate-y-4 peer-focus:-translate-y-4 peer-placeholder-shown:-translate-y-1/2 duration-300 cursor-text scale-95 peer-placeholder-shown:scale-100 peer-focus:scale-95;
+  }
+
+  .form-control-error {
+    color: #e11d48;
+    @apply px-1 pt-1 text-xs absolute bottom-0 left-0;
+  }
+
+  .input-suffix {
+    @apply absolute top-2.5 right-5 cursor-pointer text-muted-foreground;
+  }
+
+  .field-invalid {
+    .label-regular {
+      color: #e11d48;
+    }
+    .peer:focus ~ .label-regular {
+      color: #e11d48;
+    }
+    .input-control {
+      border-color: #e11d48;
+    }
+  }
+}
+
+/** Scroll bar **/
+@supports selector(::-webkit-scrollbar) {
+  .supports-scrollbars\: pr-2 {
+    padding-right: 0.5rem;
+  }
+}

@@ -11,20 +11,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   private _document = inject(DOCUMENT);
+
   constructor() {
     const isSystemDark = this._document.defaultView?.matchMedia(
       '(prefers-color-scheme: dark)'
     )?.matches;
-    
-    if(isSystemDark) {
-      this._document.body.classList.add('dark');
-    }
-  }
 
-  onToggleTheme(): void {
-    if(this._document.body.classList.contains('dark')) {
-      this._document.body.classList.remove('dark');
-    } else {
+    if (isSystemDark) {
       this._document.body.classList.add('dark');
     }
   }

@@ -19,10 +19,14 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "baseUrl": "./src",
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@forms/*": ["app/shared/forms/*"],
+      "@components/*": ["app/shared/components/*"],
+      "@directives/*": ["app/shared/directives/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
