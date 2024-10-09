@@ -1,18 +1,36 @@
 <div class="flex w-screen h-screen">
   <div class="flex flex-1 justify-center items-center">
-    <div class="bg-background shadow p-6 rounded-lg min-w-96">
+    <div class="bg-background shadow p-6 rounded-lg sm:w-10/12 md:w-5/12 xl:w-3/12">
       <h5 class="mb-2 font-bold text-2xl text-center text-foreground tracking-tight">Sign in</h5>
-      <form class="flex flex-col space-y-2 text-left" [formGroup]="signInForm">
+
+      @if(invalidLogin()) {
+      <div
+        class="flex items-center bg-red-50 dark:bg-gray-800 mb-4 p-4 rounded-lg text-red-800 text-sm dark:text-red-400"
+        role="alert"
+      >
+        <div class="icon">
+          <ng-icon name="heroExclamationCircle" size="28"></ng-icon>
+        </div>
+        <div class="ml-2 font-medium">Username or password is incorrect. Please try again.</div>
+      </div>
+
+      }
+
+      <form class="flex flex-col space-y-2 text-left" [formGroup]="signInForm" (submit)="onLogIn()">
         <app-form-field>
           <label for="username" appLabel>Username</label>
-          <input appInput type="text" id="username" formControlName="username" />
+          <input appInput type="text" id="username" formControlName="username" autocomplete="off" />
           <app-form-field-error>Required</app-form-field-error>
         </app-form-field>
         <app-form-field>
           <label for="password" appLabel>Password</label>
           <input appInput #passwordInput type="password" id="password" formControlName="password" />
-          <button appInputSuffix (mousedown)="onPasswordViewToggle(passwordInput)" (mouseup)="onPasswordViewToggle(passwordInput)">
-            @if(viewPassword) {
+          <button
+            appInputSuffix
+            (mousedown)="onPasswordViewToggle(passwordInput)"
+            (mouseup)="onPasswordViewToggle(passwordInput)"
+          >
+            @if(viewPassword()) {
             <ng-icon name="heroEyeSlash"></ng-icon>
             } @else {
             <ng-icon name="heroEye"></ng-icon>
@@ -21,10 +39,19 @@
           <app-form-field-error>Required</app-form-field-error>
         </app-form-field>
       </form>
-
+      <button
+        button-primary-bold
+        button-rounded
+        button-medium
+        class="mb-2 w-full"
+        (click)="onLogIn()"
+        [disabled]="signInForm.invalid || invalidLogin()"
+      >
+        Sign in
+      </button>
       <div class="flex items-center text-muted-foreground text-sm">
         Not a Member yet?
-        <button button-light-light button-pill button-small routerLink="/sign-up">Sign up</button>
+        <button button-light-light button-pill button-small routerLink="/sign-up" class="ml-1">Sign up</button>
       </div>
     </div>
   </div>

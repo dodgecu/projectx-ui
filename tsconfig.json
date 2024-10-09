@@ -25,7 +25,10 @@
     "paths": {
       "@forms/*": ["app/shared/forms/*"],
       "@components/*": ["app/shared/components/*"],
-      "@directives/*": ["app/shared/directives/*"]
+      "@directives/*": ["app/shared/directives/*"],
+      "@services/*": ["app/shared/services/*"],
+      "@env/*": ["environments/*"],
+      "@api/*": ["app/api/*"]
     }
   },
   "angularCompilerOptions": {

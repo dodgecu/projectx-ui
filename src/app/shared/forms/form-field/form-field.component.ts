@@ -32,6 +32,7 @@ export class FormFieldComponent implements AfterContentInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this._destroy$.next();
     this._destroy$.complete();
   }
 }
